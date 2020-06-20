@@ -93,7 +93,7 @@ def process_row_data(row_value_list, id_list, workbook):
             except:
                 invoice_dict[field] = row_value_list[index]
         #istype and ostype
-        elif field in ["istype", "ostype"]:
+        elif field in ["istype", "ostype", "idtype", "odtype"]:
             invoice_dict[field] = str(row_value_list[index])
         # remaining normal strings
         else:
@@ -102,11 +102,11 @@ def process_row_data(row_value_list, id_list, workbook):
 
 
 def process_data_sheet_and_return_dictionery(book):
-    full_id_list = ["sno", "istype", "stin", "inum", "idt", "val", "iamt", "camt",
-                    "samt", "ostype", "oinum", "oidt", "oval", "oiamt", "ocamt", "osamt"]
-    first_half_id_list = ["sno", "istype", "stin",
-                          "inum", "idt", "val", "iamt", "camt", "samt"]
-    second_half_id_list = ["ostype", "oinum",
+    full_id_list = ["sno", "istype", "stin", "idtype", "inum", "idt", "portcd", "val", "iamt",
+                    "camt", "samt", "ostype", "odtype", "oinum", "oidt", "oval", "oiamt", "ocamt", "osamt"]
+    first_half_id_list = ["sno", "istype", "stin", "idtype",
+                          "inum", "idt", "portcd", "val", "iamt", "camt", "samt"]
+    second_half_id_list = ["ostype", "odtype", "oinum",
                            "oidt", "oval", "oiamt", "ocamt", "osamt"]
     data_sheet = book.sheet_by_name("stmt1A")
     num_rows = data_sheet.nrows
@@ -116,18 +116,19 @@ def process_data_sheet_and_return_dictionery(book):
     main_dict["fromFp"] = master_details[1]
     main_dict["toFp"] = master_details[2]
     main_dict["refundRsn"] = "INVITC"
+    main_dict["version"] = "1.3"
     stmt01a_dict_list = []
     for n in range(2, num_rows):
         row_value_list = [cell for cell in data_sheet.row_values(n)]
         # print(row_value_list)
-        if row_value_list[9] == "":
+        if row_value_list[11] == "":
             processed_dict = process_row_data(
                 row_value_list, first_half_id_list, book)
             # print(processed_dict)
             stmt01a_dict_list.append(processed_dict)
         elif row_value_list[1] == "":
             processed_dict = process_row_data(
-                row_value_list[9:], second_half_id_list, book)
+                row_value_list[11:], second_half_id_list, book)
             # print(processed_dict)
             stmt01a_dict_list.append(processed_dict)
         else:
