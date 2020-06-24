@@ -1,3 +1,4 @@
+from functionalities.misc import delete_upload_download_folder_data
 from flask import (
     Blueprint,
     render_template,
@@ -15,6 +16,7 @@ from config import UPLOAD_FOLDER, DOWNLOAD_FOLDER
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join('..', 'config')))
+
 
 refund_tools_bp = Blueprint("refund_tools_bp", __name__)
 
@@ -36,6 +38,7 @@ def gstr2xl_upload():
         else:
             # file not in allowed file
             return render_template('refund/gstr2a_xl.html', error="Select valid excel file")
+    delete_upload_download_folder_data()
     return render_template('refund/gstr2a_xl.html')
 
 
@@ -63,4 +66,5 @@ def stmt1a_json_upload():
         else:
             # file not in allowed file
             return render_template('refund/stmt1a_json.html', error="Select valid excel file")
+    delete_upload_download_folder_data()
     return render_template('refund/stmt1a_json.html')
