@@ -1,0 +1,21 @@
+{% extends 'layout/layout.html' %}
+
+{% block body %}
+
+<div class="junbotron text-center">
+    <p></p>
+    <h3>GSTR-2A Excel Formatter</h3>
+    <p></p>
+    <hr>
+    <h4 class="lead">Upload Excel Template File</h4>
+    <p></p>
+    <form method=post enctype=multipart/form-data>
+        <input type=file name=file id="file" value="" class="btn btn-dark">
+        <input type=submit value=Upload id="btn" class="btn btn-dark">
+    </form>
+    <p></p>
+    <a href="static/files/gstr2Atemplate.xlsx" download>Download Template</a>
+</div>
+
+
+{% endblock %}
