@@ -1,1 +1,1 @@
-This flask web app is available for use to all on this [link](https://).
+This flask web app is available on this [link](http://nr-gst-tools.herokuapp.com/).
