@@ -4,6 +4,12 @@
 
 [2. GSTR-2A Excel Formatter](#gstr-2a-excel-formatter) [ [ source ](GSTR_2A_Excel_Formatter/main.py) ] [ [ download ](https://app.box.com/s/k5eljcv6h7q66x6m8mwbojqjc3vt47yc)]
 
+[3. GST Auto - Client Access & Login Tool - PyQt version](https://github.com/Nandraj/GST_Auto_PyQt)
+
+[4. GST Auto - Client Access & Login Tool - Eel version](https://github.com/Nandraj/GST_Auto_Eel)
+
+[5. GSTR3B Turnover Report Generator](https://github.com/Nandraj/GSTR3B_Turnover_Report_Gen)
+
 ## Statement-1A Excel to Json Generator
 We faced many problems with government provided excel macro based utility especially with regards to date columns. Generally we prepare this statement in regular excel file for printing and signature. And as it contains many rows obviously we want to directly copy this data into excel utility but date format get changed for all rows and excel utility is complaining for that. 
 
