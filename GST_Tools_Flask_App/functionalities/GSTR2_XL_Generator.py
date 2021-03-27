@@ -17,7 +17,10 @@ col_list_std_format = [
     "CGST",
     "SGST",
     "CESS",
-    "FILLING STATUS",
+    "GSTR 1 FILED",
+    "GSTR 1 FILLING DT",
+    "GSTR 1 PERIOD",
+    "GSTR 3B FILED"
 ]
 col_head_not_in_scigst_format = ["INVOICE TYPE", "POS"]
 
@@ -89,12 +92,13 @@ def get_list_of_dict_from_scigst_and_generate_list_of_row_values(
                     temp_raw_list.append("Gujarat")
             elif col_head == "NAME":
                 temp_raw_list.append(dict_[col_head].rstrip())
-            elif col_head == "FILLING STATUS":
-                if dict_[col_head] == "Y":
-                    temp_raw_list.append("Submitted")
-                else:
-                    temp_raw_list.append("Not-Submitted")
-            elif col_head == "INOVICE DT":
+            # elif col_head == "FILLING STATUS":
+            #     if dict_[col_head] == "Y":
+            #         temp_raw_list.append("Submitted")
+            #     else:
+            #         temp_raw_list.append("Not-Submitted")
+            # elif col_head == "INOVICE DT":
+            elif col_head in ["INOVICE DT", "GSTR 1 FILLING DT"]:
                 temp_raw_list.append(
                     get_date_in_format_from_excel_cell(
                         dict_[col_head], workbook)

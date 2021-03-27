@@ -6,3 +6,4 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 __pypackages__/
+.DS_Store
